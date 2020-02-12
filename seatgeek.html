@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="seatgeek.css">
+    <title>seatgeek</title>
+</head>
+<body>
+    <header>
+        <h1>seat geek api</h1>
+    </header>
+    <section class="formSection">
+        <form>
+            <div>
+                <label for="search"></label>
+                <input id="location" class="text" name="search" type="text" placeholder="song, artist, or genre" required>
+            </div>
+            <button type="submit">Search</button>
+        </form>
+    </section>
+    <main>
+    <section><h3 id="error"></h3></section>
+    <section id="songResults" class="hidden">
+        <ul id="songList">
+        </ul>
+     </section>
+     <section id="eventResults" class="hidden">
+        <ul id="eventList">
+        </ul>
+     </section>
+    </main>
+     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="seatgeek.js"></script>
+  </body>
+</html>

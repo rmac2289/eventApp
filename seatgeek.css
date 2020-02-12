@@ -1,0 +1,59 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+header {
+    border: 3px solid black;
+    width: 75%;
+    margin: 35px auto;
+    text-align: center;
+}
+main {
+    display:flex;
+}
+.formSection {
+    display: flex;
+    justify-content: center;
+}
+form {
+    text-align: center;
+}
+input {
+    border: 2px solid black;
+    height: 30px;
+    width: 300px;
+}
+button {
+    border: 1px solid black;
+    height: 30px;
+    margin-top: 15px;
+    width: 100px;
+    font-size: 1em;
+    font-weight: bolder;
+}
+.eventTitleLink {
+    text-decoration: none;
+}
+.eventTitleLink:hover {
+    text-decoration: underline;
+    cursor: pointer
+}
+.eventTitle {
+    cursor: pointer;
+}
+img {
+    height: 150px;
+    width: 200px;
+    cursor: pointer;
+}
+ul {
+    list-style: none;
+}
+#songResults {
+    width: 50%;
+}
+#eventResults {
+    width: 50%;
+}
