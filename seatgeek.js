@@ -64,12 +64,13 @@ function getEvent(searchTerm) {
 
 /* spotify credentials */
 const spotifyID = '5595ffccfff84a34b6e0eba0e5596f78'
-const spotifySecret: '379c67bc7de24475a65fc1319dc89115'
+const spotifySecret = '379c67bc7de24475a65fc1319dc89115'
 const spotifyURL = 'https://api.spotify.com/v1/search'
+const spotifyToken = 'BQDB4Uz6vzAc8p5Cbq48dnQezn8_lshjCCpY_qrqKLVF4cahHY9btSjpuzlcsUOVfmiqGwht58UFpD4QE1wn8RdyTGnYf20j0SvFzL7wuoioq64CgWcV1gtFCIhwZW'
 
 /* post request for authorization token */
 
-function getToken(){
+/* function getToken(){
     const postURL = 'https://accounts.spotify.com/api/token'
     const params = {
         grant_type: 'client_credentials'
@@ -84,17 +85,18 @@ function getToken(){
         }
     })
 
-}
+} */
 
 /* spotify fetch */ 
 
 function getSongs(searchTerm) {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer BQAF-YBghNPwE49zd1MADHPTTiEvbyJJbZzndCz0ZyXFFeVILQGY06Ar4YjhGJOye-YUmgnKetXbjcROBMzeBoebG4HRhalbaHgMippYBlkGM7Nk32dF37ystpvuOydhIhC60Z11zN5jFqNCSioeWVUeETYtXGmPS0E_lhceKYKV");
     const params = { 
       q: searchTerm,
       type: 'track',
       limit: 30,
       include_external: 'audio',
-      client_id: '5595ffccfff84a34b6e0eba0e5596f78'
      
 
       };
@@ -103,9 +105,9 @@ function getSongs(searchTerm) {
     const newurl = spotifyURL + '?' + spotifyQueryString;
   
       fetch(newurl, {
-          headers: {
-            'Authorization': spotifyToken
-          }
+          method: 'GET',
+          headers: myHeaders,
+          redirect: 'follow'
       })
          .then(response => {
             if (response.ok) {
@@ -124,17 +126,17 @@ function getSongs(searchTerm) {
 /* spotify display */ 
 
 function displaySpotifyResults(responseSongJson) {
-    console.log(responseSongJson);
-   /* $('#resultList').empty();
+    console.log(responseSongJson)
+   let newData = responseSongJson.tracks.items;
+    $('#resultList').empty();
     newData.forEach(function(val){
         
-            $('#eventList').append(`
+            $('#songList').append(`
                 <li>
-                    <a class="eventTitleLink" href="${val.url}" target="_blank"><h4 class="eventTitle">${val.title}</h4></a>
-                    <h5 class="eventVenue">${val.venue.name}</h5>
-                    <img src="${val.performers[0].image}">
+                    <a class="songLink" href="${val.href}" target="_blank"><h4 class="songTitle">${val.name}</h4></a>
+                    <img src="${val.album.images[0].url}">
                 </li> `)
-    })*/;   
+    }); 
 }
 
     /* on form submit */ 
