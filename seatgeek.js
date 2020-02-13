@@ -68,24 +68,6 @@ const spotifySecret = '379c67bc7de24475a65fc1319dc89115'
 const spotifyURL = 'https://api.spotify.com/v1/search'
 const spotifyToken = 'BQDB4Uz6vzAc8p5Cbq48dnQezn8_lshjCCpY_qrqKLVF4cahHY9btSjpuzlcsUOVfmiqGwht58UFpD4QE1wn8RdyTGnYf20j0SvFzL7wuoioq64CgWcV1gtFCIhwZW'
 
-/* post request for authorization token */
-
-/* function getToken(){
-    const postURL = 'https://accounts.spotify.com/api/token'
-    const params = {
-        grant_type: 'client_credentials'
-    };
-    const spotifyQueryString = formatQueryParams(params);
-    const spotifyPostURL = postURL + '?' + spotifyQueryString;
-
-    fetch(spotifyPostURL, {
-        method: 'POST',
-        headers: {
-        Authorization: `Basic <base64 encoded ${spotifyID}:${spotifySecret}`
-        }
-    })
-
-} */
 
 /* spotify fetch */ 
 
@@ -94,7 +76,7 @@ function getSongs(searchTerm) {
     myHeaders.append("Authorization", "Bearer BQAF-YBghNPwE49zd1MADHPTTiEvbyJJbZzndCz0ZyXFFeVILQGY06Ar4YjhGJOye-YUmgnKetXbjcROBMzeBoebG4HRhalbaHgMippYBlkGM7Nk32dF37ystpvuOydhIhC60Z11zN5jFqNCSioeWVUeETYtXGmPS0E_lhceKYKV");
     const params = { 
       q: searchTerm,
-      type: 'track',
+      type: 'playlist',
       limit: 30,
       include_external: 'audio',
      
@@ -127,14 +109,14 @@ function getSongs(searchTerm) {
 
 function displaySpotifyResults(responseSongJson) {
     console.log(responseSongJson)
-   let newData = responseSongJson.tracks.items;
+   let newData = responseSongJson.playlists.items;
     $('#resultList').empty();
     newData.forEach(function(val){
         
             $('#songList').append(`
                 <li>
-                    <a class="songLink" href="${val.href}" target="_blank"><h4 class="songTitle">${val.name}</h4></a>
-                    <img src="${val.album.images[0].url}">
+                    <a class="songLink" href="${val.external_urls.spotify}" target="_blank"><h4 class="songTitle">${val.name}</h4></a>
+                    <img src="${val.images[0].url}">
                 </li> `)
     }); 
 }
